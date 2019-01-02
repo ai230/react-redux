@@ -52,7 +52,7 @@ const CourseForm = ({
         disabled={loading}
         value={loading ? "Saving..." : "Save"}
         className="btn btn-primary"
-        onSave={onSave}
+        onClick={onSave}
       />
     </form>
   );
