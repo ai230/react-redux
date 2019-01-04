@@ -1,14 +1,15 @@
 import * as types from "./actionTypes";
-import authorAPI from "../api/mockAuthorApi";
+import AuthorAPI from "../api/mockAuthorApi";
+import { beginAjaxCall } from "./ajaxStatusActions";
 
 export function loadAuthorSuccess(authors) {
   return { type: types.LOAD_AUTHORS_SUCCESS, authors };
 }
 
 export function loadAuthors() {
-  return function(dispatch) {
-    return authorAPI
-      .getAllAuthors()
+  return dispatch => {
+    dispatch(beginAjaxCall());
+    return AuthorAPI.getAllAuthors()
       .then(authors => {
         dispatch(loadAuthorSuccess(authors));
       })
